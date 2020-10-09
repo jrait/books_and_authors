@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{author.first_name}} {{author.last_name}}</title>
+        {% load static %}
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+</head>
+<body>
+    <h1>{{author.first_name}} {{author.last_name}}</h1>
+    <h3>ID: {{author.id}}</h3>
+    <h3>Notes:</h3>
+    <p>{{author.notes}}</p>
+</body>
+
+<h3>Books:</h3>
+<ul>
+    {% for book in author.books.all%}
+    <li>{{book.title}}</li>
+    {% endfor %}
+</ul>
+<form action = '/add_info' method = 'POST'>
+{% csrf_token %}
+<input type = 'hidden' name = 'author_id' value = {{author.id}}>
+<input type = 'hidden' name = 'which_page' value = 'author'>
+<select name = 'book_id'>
+    
+    {% for book in all_books %}
+    {% if book not in author.books.all %}
+    <option value = {{book.id}}>{{book.title}}</option>
+    {% endif %}
+    {% endfor %}
+</select>
+<input class = 'button' type = 'submit' value = 'Add'>
+</form>
+<a  class = 'button' href = '/authors'>Back to Authors</a>
+</form>
+</html>

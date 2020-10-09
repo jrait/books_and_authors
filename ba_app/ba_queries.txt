@@ -1,0 +1,53 @@
+
+Books.objects.create(title = 'C Sharp',desc = "Why did the programmer need their glasses?  Because they couldn't C Sharp!")
+Books.objects.create(title = 'Java',desc = "A cup of Java on a crisp autumn morning")
+Books.objects.create(title = 'Python',desc = "Pyth-off, Pyth-on")
+Books.objects.create(title = 'PHP',desc = "Pineapple and Ham Pizza")
+Books.objects.create(title = 'Ruby',desc = "The best Pokemon game")
+
+Authors.objects.create(first_name = "Jane",last_name = "Austen")
+Authors.objects.create(first_name = "Emily",last_name = "Dickinson")
+Authors.objects.create(first_name = "Fyodor",last_name = "Dostoevsky")
+Authors.objects.create(first_name = "William ",last_name = "Shakespeare")
+Authors.objects.create(first_name = "Lau ",last_name = "Tzu")
+
+c_sharp = Books.objects.get(id = 1)
+c_sharp.title = 'C#'
+c_sharp.save()
+
+billy = Authors.objects.get(id = 4)
+billy.first_name = 'Bill'
+billy.save()
+
+first_book = Books.objects.get(id=1)
+second_book = Books.objects.get(id=2)
+first_author = Authors.objects.get(id=1)
+
+first_author.books.add(first_book,second_book)
+second_author = Authors.objects.get(id=2)
+
+for book in Books.objects.all():
+    if id < 4:
+        second_author.books.add(book)
+
+third_author = Authors.objects.get(id=3)
+
+for book in Books.objects.all():
+    if book.id < 5:
+        third_author.books.add(book)
+
+fourth_author = Authors.objects.get(id=4)
+for book in Books.objects.all():
+    if book.id < 6:
+        fourth_author.books.add(book)
+
+third_book = Books.objects.get(id=3)
+third_book.authors.all()
+third_book.authors.first()
+third_book.authors.remove(third_book.authors.first())
+
+second_book.authors.add(Authors.objects.get(id=5))
+
+third_author.books.all()
+fifth_book = Books.objects.get(id=5)
+fifth_book.authors.all()

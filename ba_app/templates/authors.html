@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'style.css' %}">
+
+</head>
+<body>
+    <h1>Authors</h1>
+    <div id = container>
+    
+        <form action = '/process' method = 'POST'>
+            {% csrf_token %}
+            <input type = 'hidden' name = 'form_for' value = 'authors'>
+            <label for="first_name">First Name</label>
+            <input type = 'text' name = 'first_name'>
+            <label for="last_name">Last Name</label>
+            <input type = 'text' name = 'last_name'>
+            <label for='notes'>Notes</label>
+            <textarea name = 'notes'></textarea>
+            <input class = 'button' type = 'submit' value = 'Add'>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in all_authors %}
+
+                <tr>
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td><a href = '/authors/{{author.id}}'>View Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+</div>
+<a class = 'button' href = '/'>View All Books</a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+*{
+    background-color: lemonchiffon;
+}
+
+a{
+    text-decoration: none;
+    color: darkslategray;
+    background-color:lightsalmon;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px;
+}
+#container{
+    display:flex;
+    width: 800px;
+    justify-content:space-between;
+}
+input{
+    margin: 10px;
+    width: 200px;
+    background-color: blanchedalmond;
+}
+textarea{
+    background-color:blanchedalmond;
+}
+select{
+    background-color:lightskyblue;
+}
+option{
+    background-color: rgb(204, 235, 255)
+}
+
+.button{
+    border:1px solid rgb(206, 120, 92);
+    background-color: lightsalmon;
+    border-radius:5px;
+    padding: 5px;
+    box-shadow: 2px 2px 2px;
+    margin: 20px;
+}
+
+
+th{
+    background-color:peachpuff;
+}
+td{
+    background-color: peachpuff;
+    padding: 5px;
+}
